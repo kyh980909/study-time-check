@@ -1,9 +1,14 @@
+"""
+descrip       : 스터디 데이터 조회 프로그램
+developer     : 김용호
+develop date  : 2019-04-10
+e-mail        : kyh980909@gmail.com
+"""
+
 import requests
 from bs4 import BeautifulSoup
 from requests import get  # to make GET request
-from openpyxl import load_workbook
 import os
-import time
 import study_excel_read
 
 
@@ -56,8 +61,6 @@ else:
         down_url = 'http://e-portfolio.bible.ac.kr' + excel.get('href')  # 태그안 href속성 값 가져오기
 
         download(down_url, file_name)
-
-        print(down_url)
         print('파일 다운 완료')
     else:
         print('출석현황 파일이 아닙니다.')

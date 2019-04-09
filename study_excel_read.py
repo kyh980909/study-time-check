@@ -1,3 +1,10 @@
+"""
+descrip       : 스터디 데이터 조회 프로그램
+developer     : 김용호
+develop date  : 2019-04-10
+e-mail        : kyh980909@gmail.com
+"""
+
 from openpyxl import load_workbook
 
 
@@ -54,7 +61,7 @@ def study_time_search(filename, user_name):
     for values in all_values:
         if user_name in values:
             for value in values:
-                print('%-015s' % value, end='')
+                print('%-014s' % value, end='')
                 is_check = True
         else:
             continue
