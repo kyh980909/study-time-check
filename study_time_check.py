@@ -4,7 +4,7 @@ from requests import get  # to make GET request
 from openpyxl import load_workbook
 import os
 import time
-from time import strftime
+import study_excel_read
 
 
 def download(url, filename):
@@ -17,7 +17,8 @@ def file_check(filename):   # 파일 이름을 매개변수로 보내서 파일�
     return os.path.exists(filename)
 
 
-start_time = time.time()
+user_name = input('이름이나 팀명을 입력하세요: ')
+
 
 login_url = 'http://e-portfolio.bible.ac.kr/Templates/sFTLogin.aspx'
 
@@ -65,9 +66,4 @@ else:
 
 # 여기부터 엑셀 읽기 시작
 
-load_wb = load_workbook(file_name, data_only=True)
-load_ws = load_wb['Sheet1']
-
-print(load_ws['A1'].value)
-
-print('걸린시간:', time.time() - start_time)
+study_excel_read.study_time_search(file_name, user_name)
