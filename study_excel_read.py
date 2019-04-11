@@ -2,6 +2,7 @@
 descrip       : 스터디 데이터 조회 프로그램
 developer     : 김용호
 develop date  : 2019-04-10
+last update   : 2019-04-11
 e-mail        : kyh980909@gmail.com
 """
 
@@ -35,21 +36,19 @@ def study_time_search(filename, user_name):
     all_values = []
     headers = []
 
-    i = 0
-    for row in load_ws.rows:
+    for index, row in enumerate(load_ws.rows):
         row_value = []
         for cell in row:
             if cell.value == '필수활동' or cell.value == '출석 시간(분)':
                 pass
             else:
                 row_value.append(cell.value)
-        if i == 0:
+        if index == 0:
             headers.append(row_value)
-        elif i == 1:
+        elif index == 1:
             headers.append(row_value)
         else:
             all_values.append(row_value)
-        i += 1
 
     headers = header_fix(headers)
 

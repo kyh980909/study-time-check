@@ -2,6 +2,7 @@
 descrip       : 스터디 데이터 조회 프로그램
 developer     : 김용호
 develop date  : 2019-04-10
+last update   : 2019-04-11
 e-mail        : kyh980909@gmail.com
 """
 
@@ -24,25 +25,13 @@ def file_check(filename):   # 파일 이름을 매개변수로 보내서 파일�
 
 user_name = input('이름이나 팀명을 입력하세요: ')
 
-
-login_url = 'http://e-portfolio.bible.ac.kr/Templates/sFTLogin.aspx'
-
 user = '201704005'  # 아이디
-pw = '2017040'  # 비밀번호
 
-session = requests.session()
 cookies = {'MEM_ID': user}  # 쿠키 생성
-
-params = dict()
-params['txtOprID'] = user
-params['txtOprPW'] = pw
-
-res = session.post(login_url, data=params)
-
-res.raise_for_status()
+# 쿠키에 MEM_ID 값만 있으면 스터디 엑셀 첨부 페이지로 접속 가능한것 같음
 
 study_url = 'http://e-portfolio.bible.ac.kr/blog/blogMain.aspx?blogid=study-ctl&catseqno=21369'
-res = session.get(study_url, cookies=cookies)  # 쿠키 넣기
+res = requests.get(study_url, cookies=cookies)  # 쿠키 넣기
 
 res.raise_for_status()
 
