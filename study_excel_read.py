@@ -17,10 +17,13 @@ def header_fix(header_list):  # header 전처리 함수
         if lst is not None:
             header1.append(lst)
 
-    for index in range(len(header_list[1])):
-        if header_list[1][index] is None:   # header_list[1][index]값이 None이면 header1의 있는 값을 차례로 넣음
-            header_list[1][index] = header1[j]
-            j += 1
+    try:
+        for index in range(len(header_list[1])):
+            if header_list[1][index] is None:   # header_list[1][index]값이 None이면 header1의 있는 값을 차례로 넣음
+                header_list[1][index] = header1[j]
+                j += 1
+    except Exception as ex:  # list index out of range 예외 처리
+        print("예외 발생:", ex)
 
     temp = header_list[1]
     header_list.clear()
